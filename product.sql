@@ -1,0 +1,6 @@
+CREATE TABLE Product
+(
+    ProductId INT IDENTITY PRIMARY KEY NOT NULL,
+    ProductName NVARCHAR(128) NOT NULL,
+    ProductDescription NVARCHAR(1000) NOT NULL,
+)
