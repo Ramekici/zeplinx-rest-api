@@ -1,7 +1,7 @@
 'use strict';
 const sql = require('mssql');
 const { config } = require('../config');
-const validateProductsInput = require('../validation/validation');
+
 
 const getProducts = async () => {
     try {
@@ -35,8 +35,6 @@ const getProductById = async (productId) => {
 
 const addProduct = async (data) => {
     try {
-
-
         let pool = await sql.connect(config)
         const insertData = await pool.request()
             .input('name', sql.NVarChar, data.name)
@@ -57,8 +55,7 @@ const updateProduct = async (updatedData, id) => {
             .input('id', sql.Int, id)
             .input('name', sql.NVarChar, updatedData.name)
             .input('desc', sql.NVarChar, updatedData.desc)
-            .query('update Product set ProductDescription=@desc where ProductId=@id')
-            .query('update Product set ProductName=@name where ProductId=@id');
+            .query('update Product set (ProductName=@name, ProductDescription=@desc) where ProductId=@id')
         sql.close();
         return updaData.rowsAffected;
     } catch (err) {

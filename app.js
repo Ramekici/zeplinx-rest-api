@@ -1,8 +1,8 @@
+'use strict'
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const products = require('./api/products');
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

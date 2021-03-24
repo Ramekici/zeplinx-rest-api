@@ -7,7 +7,6 @@ module.exports = validateProductsInput = (data) => {
     data.ProductName = !isEmpty(data.ProductName) ? data.ProductName : '';
     data.ProductDescription = !isEmpty(data.ProductDescription) ? data.ProductDescription : '';
 
-    console.log(data);
     if (Validator.isEmpty(data.ProductName)) {
         errors.name = 'Urun alanı boş bırakılmamalıdır'
     }
